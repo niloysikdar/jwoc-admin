@@ -7,18 +7,18 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { Layout, MentorCard } from '../components';
-import { MentorType } from '../types/MentorType';
+import { Layout, MenteeCard } from '../components';
+import { MenteeType } from '../types/MenteeType';
 
-const Home = () => {
-  const [mentorData, setMentorData] = useState<MentorType[]>();
+const Mentee = () => {
+  const [menteeData, setMenteeData] = useState<MenteeType[]>();
   const [isLoading, setIsloading] = useState(true);
   const [searchText, setSearchText] = useState('');
-  const [searchedData, setSearchedData] = useState<MentorType[]>();
+  const [searchedData, setSearchedData] = useState<MenteeType[]>();
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL as string}/mentor`, {
+      .get(`${process.env.NEXT_PUBLIC_API_URL as string}/mentee`, {
         headers: {
           username: process.env.NEXT_PUBLIC_ADMIN_USERNAME as string,
           password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD as string,
@@ -26,7 +26,7 @@ const Home = () => {
       })
       .then((res) => {
         setIsloading(false);
-        setMentorData(res.data.data);
+        setMenteeData(res.data.data);
       })
       .catch((err) => {
         setIsloading(false);
@@ -36,8 +36,8 @@ const Home = () => {
 
   const handleSearch = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setSearchText(e.target.value);
-    const fuse = new Fuse(mentorData as MentorType[], {
-      keys: ['name', 'email', 'college', 'projectTags'],
+    const fuse = new Fuse(menteeData as MenteeType[], {
+      keys: ['name', 'email', 'college'],
       threshold: 0.2,
     });
     const result = fuse.search(e.target.value).map((item) => item.item);
@@ -45,14 +45,14 @@ const Home = () => {
   };
 
   return (
-    <Layout pageName='Mentor'>
+    <Layout pageName='Mentee'>
       <Typography variant='h5'>
-        All Mentors ({(searchText ? searchedData?.length : mentorData?.length) || 0})
+        All Mentees ({(searchText ? searchedData?.length : menteeData?.length) || 0})
       </Typography>
       <Box className='my-6 lg:w-6/12'>
         <TextField
           label='Search here'
-          placeholder='name, email, college, tags'
+          placeholder='name, email, college'
           variant='outlined'
           fullWidth
           value={searchText}
@@ -65,21 +65,21 @@ const Home = () => {
         </Box>
       ) : (
         <CardArea
-          allData={searchText ? (searchedData as MentorType[]) : (mentorData as MentorType[])}
+          allData={searchText ? (searchedData as MenteeType[]) : (menteeData as MenteeType[])}
         />
       )}
     </Layout>
   );
 };
 
-const CardArea = ({ allData }: { allData: MentorType[] }) => {
+const CardArea = ({ allData }: { allData: MenteeType[] }) => {
   return (
     <Box className='flex flex-wrap gap-6'>
       {allData?.map((data) => (
-        <MentorCard key={data._id} mentorData={data} />
+        <MenteeCard key={data._id} menteeData={data} />
       ))}
     </Box>
   );
 };
 
-export default Home;
+export default Mentee;
