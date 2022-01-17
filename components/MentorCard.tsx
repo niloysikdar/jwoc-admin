@@ -22,7 +22,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         Ph: {mentorData.phone}, Wp: {mentorData.whatsapp}
       </Typography>
       <Typography className='mt-3'>{mentorData.college}</Typography>
-      <Typography className='my-1'>Year: {mentorData.year}</Typography>
+      <Typography className='my-1'>Current Year: {mentorData.year}</Typography>
       <Stack spacing={5} direction='row' className='mt-4 mb-3'>
         <a
           href={mentorData.github}

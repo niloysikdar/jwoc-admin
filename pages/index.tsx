@@ -10,7 +10,7 @@ import axios from 'axios';
 const Home = ({ data }: { data: MentorType[] }) => {
   return (
     <Layout>
-      <Typography variant='h5'>All Mentors</Typography>
+      <Typography variant='h5'>All Mentors ({data?.length})</Typography>
       <Box className='my-6 lg:w-6/12'>
         <TextField label='Search here' variant='outlined' fullWidth />
       </Box>
