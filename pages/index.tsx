@@ -38,7 +38,7 @@ const Home = () => {
     setSearchText(e.target.value);
     const fuse = new Fuse(mentorData as MentorType[], {
       keys: ['name', 'email', 'college', 'projectTags'],
-      threshold: 0.2,
+      threshold: 0.1,
     });
     const result = fuse.search(e.target.value).map((item) => item.item);
     setSearchedData(result);
@@ -46,7 +46,9 @@ const Home = () => {
 
   return (
     <Layout pageName='Mentor'>
-      <Typography variant='h5'>All Mentors ({mentorData?.length || 0})</Typography>
+      <Typography variant='h5'>
+        All Mentors ({(searchText ? searchedData?.length : mentorData?.length) || 0})
+      </Typography>
       <Box className='my-6 lg:w-6/12'>
         <TextField
           label='Search here'
