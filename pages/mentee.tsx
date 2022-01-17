@@ -10,7 +10,7 @@ import axios from 'axios';
 const Mentee = ({ data }: { data: MenteeType[] }) => {
   return (
     <Layout pageName='Mentee'>
-      <Typography variant='h5'>All Mentees ({data?.length})</Typography>
+      <Typography variant='h5'>All Mentees ({data?.length || 0})</Typography>
       <Box className='my-6 lg:w-6/12'>
         <TextField label='Search here' variant='outlined' fullWidth />
       </Box>
