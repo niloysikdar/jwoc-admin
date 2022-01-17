@@ -71,7 +71,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const Sidebar: FC = (props) => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);

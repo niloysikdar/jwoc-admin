@@ -1,15 +1,24 @@
 import Typography from '@mui/material/Typography';
-import { Layout } from '../components';
-import { Card } from '@mui/material';
-import axios from 'axios';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+
+import { Layout, MentorCard } from '../components';
 import { MentorType } from '../types/MentorType';
 
-const Home = ({ data }: { data: MentorType[] }) => {
-  console.log(data);
+import axios from 'axios';
 
+const Home = ({ data }: { data: MentorType[] }) => {
   return (
     <Layout>
-      <Typography variant='h6'>Here is a very good thing</Typography>
+      <Typography variant='h5'>All Mentors</Typography>
+      <Box className='my-6 lg:w-6/12'>
+        <TextField label='Search here' variant='outlined' fullWidth />
+      </Box>
+      <Box className='flex flex-wrap gap-6'>
+        {data?.map((mentorData) => (
+          <MentorCard key={mentorData._id} mentorData={mentorData} />
+        ))}
+      </Box>
     </Layout>
   );
 };
