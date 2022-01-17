@@ -1,18 +1,13 @@
 import type { AppProps } from 'next/app';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
+import { RecoilRoot } from 'recoil';
 
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <RecoilRoot>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </RecoilRoot>
   );
 }
 

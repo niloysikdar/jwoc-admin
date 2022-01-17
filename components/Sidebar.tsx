@@ -18,6 +18,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+import { useRecoilState } from 'recoil';
+import { isDarkState } from '../atoms/isDarkAtom';
 
 const drawerWidth = 240;
 
@@ -73,6 +78,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export const Sidebar: FC = (props) => {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
+  const [isDarkmode, setIsdarkmode] = useRecoilState(isDarkState);
+
+  const toggleDark = () => {
+    setIsdarkmode(!isDarkmode);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -99,6 +109,14 @@ export const Sidebar: FC = (props) => {
           <Typography variant='h6' noWrap component='div'>
             JWoC Admin Panel
           </Typography>
+
+          <Typography variant='h6' className='ml-10'>
+            {theme.palette.mode} mode
+          </Typography>
+
+          <IconButton sx={{ ml: 1 }} color='inherit' onClick={toggleDark}>
+            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer

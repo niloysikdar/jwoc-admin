@@ -38,7 +38,7 @@ const Home = () => {
     setSearchText(e.target.value);
     const fuse = new Fuse(mentorData as MentorType[], {
       keys: ['name', 'email', 'college', 'projectTags'],
-      threshold: 0.1,
+      threshold: 0.2,
     });
     const result = fuse.search(e.target.value).map((item) => item.item);
     setSearchedData(result);

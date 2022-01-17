@@ -1,5 +1,9 @@
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useRecoilValue } from 'recoil';
+import { isDarkState } from '../atoms/isDarkAtom';
+
 import { Sidebar } from './Sidebar';
 
 interface PropTypes {
@@ -7,6 +11,17 @@ interface PropTypes {
 }
 
 const Layout: FC<PropTypes> = (props) => {
+  const isDarkMode = useRecoilValue(isDarkState);
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: isDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [isDarkMode],
+  );
+
   return (
     <>
       <Head>
@@ -15,7 +30,9 @@ const Layout: FC<PropTypes> = (props) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Sidebar>{props.children}</Sidebar>
+      <ThemeProvider theme={theme}>
+        <Sidebar>{props.children}</Sidebar>
+      </ThemeProvider>
     </>
   );
 };

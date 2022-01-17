@@ -38,7 +38,7 @@ const Mentee = () => {
     setSearchText(e.target.value);
     const fuse = new Fuse(menteeData as MenteeType[], {
       keys: ['name', 'email', 'college'],
-      threshold: 0.1,
+      threshold: 0.2,
     });
     const result = fuse.search(e.target.value).map((item) => item.item);
     setSearchedData(result);
