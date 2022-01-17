@@ -22,12 +22,12 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         Ph: {mentorData.phone}, Wp: {mentorData.whatsapp}
       </Typography>
       <Typography className='mt-3'>{mentorData.college}</Typography>
-      <Typography className='my-1'>Year: {mentorData.year}</Typography>
+      <Typography className='my-1'>Current Year: {mentorData.year}</Typography>
       <Stack spacing={5} direction='row' className='mt-4 mb-3'>
         <a
           href={mentorData.github}
           target='_blank'
-          rel='noopener'
+          rel='noreferrer'
           className='flex items-start gap-x-1'
         >
           <GitHubIcon fontSize='small' className='mt-[1px]' /> GitHub
@@ -36,7 +36,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         <a
           href={mentorData.linkedIn}
           target='_blank'
-          rel='noopener'
+          rel='noreferrer'
           className='flex items-start gap-x-1'
         >
           <LinkedInIcon fontSize='small' className='mt-[1px]' /> LinkedIn
@@ -58,7 +58,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
             <a
               href={mentorData.projectLink}
               target='_blank'
-              rel='noopener'
+              rel='noreferrer'
               className='flex items-start gap-x-1'
             >
               <GitHubIcon fontSize='medium' className='mt-[1px]' />

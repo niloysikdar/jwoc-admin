@@ -2,11 +2,15 @@ import Head from 'next/head';
 import { FC } from 'react';
 import { Sidebar } from './Sidebar';
 
-const Layout: FC = (props) => {
+interface PropTypes {
+  pageName: string;
+}
+
+const Layout: FC<PropTypes> = (props) => {
   return (
     <>
       <Head>
-        <title>JWoC Admin Panel</title>
+        <title>JWoC Admin Panel | {props.pageName}</title>
         <meta name='description' content='JWoC Admin Panel' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
