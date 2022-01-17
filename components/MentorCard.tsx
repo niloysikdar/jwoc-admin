@@ -27,7 +27,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         <a
           href={mentorData.github}
           target='_blank'
-          rel='noopener'
+          rel='noreferrer'
           className='flex items-start gap-x-1'
         >
           <GitHubIcon fontSize='small' className='mt-[1px]' /> GitHub
@@ -36,7 +36,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         <a
           href={mentorData.linkedIn}
           target='_blank'
-          rel='noopener'
+          rel='noreferrer'
           className='flex items-start gap-x-1'
         >
           <LinkedInIcon fontSize='small' className='mt-[1px]' /> LinkedIn
@@ -58,7 +58,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
             <a
               href={mentorData.projectLink}
               target='_blank'
-              rel='noopener'
+              rel='noreferrer'
               className='flex items-start gap-x-1'
             >
               <GitHubIcon fontSize='medium' className='mt-[1px]' />
