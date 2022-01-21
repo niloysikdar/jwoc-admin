@@ -14,15 +14,15 @@ import { MentorType } from '../types/MentorType';
 const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
   return (
     <Card elevation={5} className='max-w-sm px-4 py-3'>
-      <Typography variant='h6' className='font-semibold'>
+      <Typography variant='h6' fontWeight={600}>
         {mentorData.name}
       </Typography>
-      <Typography className='my-1'>{mentorData.email}</Typography>
+      <Typography margin='4px 0'>{mentorData.email}</Typography>
       <Typography variant='subtitle2'>
         Ph: {mentorData.phone}, Wp: {mentorData.whatsapp}
       </Typography>
-      <Typography className='mt-3'>{mentorData.college}</Typography>
-      <Typography className='my-1'>Current Year: {mentorData.year}</Typography>
+      <Typography marginTop='10px'>{mentorData.college}</Typography>
+      <Typography margin='3px 0'>Current Year: {mentorData.year}</Typography>
       <Stack spacing={5} direction='row' className='mt-4 mb-3'>
         <a
           href={mentorData.github}
@@ -44,7 +44,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
       </Stack>
 
       <Stack direction='row' className='items-center mb-4 gap-2'>
-        <Typography className='font-semibold'>Selected:</Typography>
+        <Typography fontWeight={600}>Selected:</Typography>
         <Switch checked={mentorData.isSelected} />
       </Stack>
 
@@ -54,7 +54,7 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Stack direction='row' spacing={2} alignItems='center' className='mb-2'>
-            <Typography className='font-semibold'>{mentorData.projectName}</Typography>
+            <Typography fontWeight={600}>{mentorData.projectName}</Typography>
             <a
               href={mentorData.projectLink}
               target='_blank'
@@ -66,12 +66,12 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
           </Stack>
           <Stack direction='row' className='flex-wrap gap-1'>
             {mentorData.projectTags.map((tag, index) => (
-              <Typography key={index} variant='subtitle2' className='font-semibold'>
+              <Typography key={index} variant='subtitle2' fontWeight={600}>
                 {index !== 0 && '|'} {tag}
               </Typography>
             ))}
           </Stack>
-          <Typography variant='body2' className='mt-2'>
+          <Typography variant='body2' marginTop='7px'>
             {mentorData.projectDescription}
           </Typography>
         </AccordionDetails>
@@ -82,10 +82,14 @@ const MentorCard = ({ mentorData }: { mentorData: MentorType }) => {
           <Typography>Questions {'&'} Answers</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className='font-semibold mb-1'>{mentorData.question1}</Typography>
+          <Typography fontWeight={600} marginBottom='4px'>
+            {mentorData.question1}
+          </Typography>
           <Typography variant='body2'>{mentorData.answer1}</Typography>
 
-          <Typography className='font-semibold mt-3 mb-1'>{mentorData.question2}</Typography>
+          <Typography fontWeight={600} marginTop='15px' marginBottom='4px'>
+            {mentorData.question2}
+          </Typography>
           <Typography variant='body2'>{mentorData.answer2}</Typography>
         </AccordionDetails>
       </Accordion>

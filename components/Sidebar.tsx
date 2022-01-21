@@ -110,7 +110,7 @@ export const Sidebar: FC = (props) => {
             JWoC Admin Panel
           </Typography>
 
-          <Typography variant='h6' className='ml-10'>
+          <Typography variant='h6' marginLeft='2.5rem'>
             {theme.palette.mode} mode
           </Typography>
 

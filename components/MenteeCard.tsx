@@ -14,15 +14,15 @@ import { MenteeType } from '../types/MenteeType';
 const MenteeCard = ({ menteeData }: { menteeData: MenteeType }) => {
   return (
     <Card elevation={5} className='max-w-sm px-4 py-3'>
-      <Typography variant='h6' className='font-semibold'>
+      <Typography variant='h6' fontWeight={600}>
         {menteeData.name}
       </Typography>
-      <Typography className='my-1'>{menteeData.email}</Typography>
+      <Typography margin='4px 0'>{menteeData.email}</Typography>
       <Typography variant='subtitle2'>
         Ph: {menteeData.phone}, Wp: {menteeData.whatsapp}
       </Typography>
-      <Typography className='mt-3'>{menteeData.college}</Typography>
-      <Typography className='my-1'>Current Year: {menteeData.year}</Typography>
+      <Typography marginTop='10px'>{menteeData.college}</Typography>
+      <Typography margin='3px 0'>Current Year: {menteeData.year}</Typography>
       <Stack spacing={5} direction='row' className='mt-4 mb-3'>
         <a
           href={menteeData.github}
@@ -44,7 +44,7 @@ const MenteeCard = ({ menteeData }: { menteeData: MenteeType }) => {
       </Stack>
 
       <Stack direction='row' className='items-center mb-4 gap-2'>
-        <Typography className='font-semibold'>First Time:</Typography>
+        <Typography fontWeight={600}>First Time:</Typography>
         <Switch checked={menteeData.isFirstTime} />
       </Stack>
 
@@ -53,7 +53,9 @@ const MenteeCard = ({ menteeData }: { menteeData: MenteeType }) => {
           <Typography>Questions {'&'} Answers</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className='font-semibold mb-1'>{menteeData.question1}</Typography>
+          <Typography fontWeight={600} marginBottom='5px'>
+            {menteeData.question1}
+          </Typography>
           <Typography variant='body2'>{menteeData.answer1}</Typography>
         </AccordionDetails>
       </Accordion>
